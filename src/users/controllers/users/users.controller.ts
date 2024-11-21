@@ -90,7 +90,7 @@ export class UsersController {
   @UsePipes(new ValidationPipe())
   createUser(@Body() userData: createUser) {
     console.log(userData.email);
-    return {};
+    return this.UserService.createUser(userData);
   }
 
   @Get(':id')
@@ -99,7 +99,7 @@ export class UsersController {
     @Query('sortBy') sortBy: string,
   ) {
     console.log(id, sortBy);
-    return {};
+    return this.UserService.fetchUserById(id);
   }
 
   @Get(':id/:postId')
